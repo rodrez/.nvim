@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/Users/fabianrodriguez/.local/share/nvim/lua/mask'
+let g:netrw_dirhist_2='/Users/fabianrodriguez/.local/share/nvim/lua'
+let g:netrw_dirhist_1='/Users/fabianrodriguez/.local/share/nvim'

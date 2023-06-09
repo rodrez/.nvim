@@ -17,3 +17,5 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- Map esc to C-c
 vim.keymap.set("i", "<C-c>", "<Esc>")
+
+

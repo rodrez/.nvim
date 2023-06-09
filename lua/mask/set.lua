@@ -9,6 +9,3 @@ vim.opt.expandtab = true -- find out what this is
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
-
-vim.opt.hlsearch = false -- need to see which one i like
-

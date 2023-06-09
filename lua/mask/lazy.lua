@@ -30,13 +30,29 @@ local plugins = {
     { "theprimeagen/refactoring.nvim" },
     { "theprimeagen/vim-with-me" },
      {
-          'nvim-telescope/telescope.nvim', 
+          'nvim-telescope/telescope.nvim',
           dependencies = { 'nvim-lua/plenary.nvim'}
       },
 	-- find the keys
-	{ "folke/which-key.nvim",                   lazy = true },
-	{ "folke/trouble.nvim",                     lazy = true },
+{
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  init = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+  end,
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  },
+  },
+  { "folke/trouble.nvim",
+ dependencies = { "nvim-tree/nvim-web-devicons" },
+},
 	{ "folke/zen-mode.nvim",                    lazy = true },
+
+    -- LSP
 	{
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v1.x',
@@ -62,6 +78,21 @@ local plugins = {
 			require('lsp-zero').setup()
 		end,
 	},
+    {'numToStr/Comment.nvim',
+    config = function()
+            require('Comment').setup()
+        end
+    },
+    {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+        require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+        })
+    end
+    }
 }
 
 require("lazy").setup(plugins, {})

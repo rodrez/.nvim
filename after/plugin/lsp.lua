@@ -5,6 +5,9 @@ lsp.preset("recommended")
 lsp.ensure_installed({
   'tsserver',
   'rust_analyzer',
+  'ruff_lsp',
+  'pyright',
+  'lua_ls'
 })
 
 -- Fix Undefined global 'vim'
@@ -20,7 +23,7 @@ lsp.configure('lua-language-server', {
 
 
 local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+    local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<Tab>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<S-Tab>'] = cmp.mapping.select_next_item(cmp_select),
@@ -35,12 +38,12 @@ lsp.setup_nvim_cmp({
 
 lsp.set_preferences({
     suggest_lsp_servers = false,
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-    }
+    -- sign_icons = {
+    --     error = 'E',
+    --     warn = 'W',
+    --     hint = 'H',
+    --     info = 'I'
+    -- }
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -52,12 +55,18 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
   vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
   vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-  vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-  vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-  vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set("n", "<leader>lca", function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set("n", "<leader>le", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
+lsp.format_on_save({
+  format_opts = {
+    async = false,
+    timeout_ms = 10000,
+  },
+})
 lsp.setup()
 
 vim.diagnostic.config({
