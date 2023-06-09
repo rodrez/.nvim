@@ -16,46 +16,52 @@ vim.g.mapleader = " " -- sets map leader to space
 
 local plugins = {
 
--- find the keys
-{ "folke/neoconf.nvim", cmd = "Neoconf" }, 
-	"folke/neodev.nvim",
+	{ "folke/neoconf.nvim",                     cmd = "Neoconf" },
+	-- Themes
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+	},
+	-- Must haves
+	{ "nvim-treesitter/nvim-treesitter",        run = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter-context" },
+    { "theprimeagen/harpoon" },
+    { "theprimeagen/refactoring.nvim" },
+    { "theprimeagen/vim-with-me" },
+     {
+          'nvim-telescope/telescope.nvim', 
+          dependencies = { 'nvim-lua/plenary.nvim'}
+      },
+	-- find the keys
+	{ "folke/which-key.nvim",                   lazy = true },
+	{ "folke/trouble.nvim",                     lazy = true },
+	{ "folke/zen-mode.nvim",                    lazy = true },
+	{
+		'VonHeikemen/lsp-zero.nvim',
+		branch = 'v1.x',
+		dependencies = {
+			-- LSP Support
+			{ 'neovim/nvim-lspconfig' },
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
 
--- Themes
-{
-  "folke/tokyonigth.nvim",
-  lazy = false,
-  priority = 1000,
-},
+			-- Autocompletion
+			{ 'hrsh7th/nvim-cmp' },
+			{ 'hrsh7th/cmp-buffer' },
+			{ 'hrsh7th/cmp-path' },
+			{ 'saadparwaiz1/cmp_luasnip' },
+			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ 'hrsh7th/cmp-nvim-lua' },
 
--- Must haves
-{"nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
-{"nvim-treesitter/nvim-treesitter-configs"},
-"nvim-treesitter/nvim-treesitter-context",
-{"folke/which-key.nvim" , lazy = true},
-{"folke/trouble.nvim" , lazy = true},
-{"folke/zen-mode.nvim" },
- {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v1.x',
-	  requires = {
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},
-		  --{'williamboman/mason.nvim'},
-		  --{'williamboman/mason-lspconfig.nvim'},
+			-- Snippets
+			{ 'L3MON4D3/LuaSnip' },
+			{ 'rafamadriz/friendly-snippets' },
+		},
+		config = function()
+			require('lsp-zero').setup()
+		end,
+	},
+}
 
-		  -- Autocompletion
-		  {'hrsh7th/nvim-cmp'},
-		  {'hrsh7th/cmp-buffer'},
-		  {'hrsh7th/cmp-path'},
-		  {'saadparwaiz1/cmp_luasnip'},
-		  {'hrsh7th/cmp-nvim-lsp'},
-		  {'hrsh7th/cmp-nvim-lua'},
-
-		  -- Snippets
-		  {'L3MON4D3/LuaSnip'},
-		  {'rafamadriz/friendly-snippets'},
-	  },
-  },
-
-},
-require("lazy").setup(plugins, opts)
+require("lazy").setup(plugins, {})
