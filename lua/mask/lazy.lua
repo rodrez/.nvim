@@ -72,6 +72,8 @@ local plugins = {
 			{ "williamboman/mason.nvim" },
 			{ "williamboman/mason-lspconfig.nvim" },
 			{ "jay-babu/mason-null-ls.nvim" },
+			--Formatting
+			{ "jose-elias-alvarez/null-ls.nvim" },
 
 			-- Autocompletion
 			{ "hrsh7th/nvim-cmp" },
@@ -84,13 +86,7 @@ local plugins = {
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" },
 			{ "rafamadriz/friendly-snippets" },
-
-			--Formatting
-			{ "jose-elias-alvarez/null-ls.nvim" },
 		},
-		config = function()
-			require("lsp-zero").setup()
-		end,
 	},
 }
 

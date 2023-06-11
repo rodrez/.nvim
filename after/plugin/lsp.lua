@@ -5,13 +5,13 @@ lsp.preset("recommended")
 lsp.ensure_installed({
 	"tsserver",
 	"rust_analyzer",
-	"ruff_lsp",
 	"pyright",
+	"ruff_lsp",
 	"lua_ls",
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure("lua-language-server", {
+lsp.configure("lua_ls", {
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -87,6 +87,7 @@ lsp.format_on_save({
 	servers = {
 		-- ['lua_ls'] = {'lua'},
 		-- ['rust_analyzer'] = {'rust'},
+		-- ["pyright"] = { "python" },
 		-- if you have a working setup with null-ls
 		-- you can specify filetypes it can format.
 		["null-ls"] = { "javascript", "typescript", "python", "lua" },
@@ -109,4 +110,11 @@ null_ls.setup({
 		null_ls.builtins.formatting.prettier,
 		null_ls.builtins.formatting.black,
 	},
+})
+
+-- See mason-null-ls.nvim's documentation for more details:
+-- https://github.com/jay-babu/mason-null-ls.nvim#setup
+require("mason-null-ls").setup({
+	ensure_installed = nil,
+	automatic_installation = true,
 })
