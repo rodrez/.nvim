@@ -25,7 +25,7 @@ local plugins = {
 	{ "nvim-treesitter/nvim-treesitter-context" },
 	{ "theprimeagen/harpoon" },
 	{ "theprimeagen/refactoring.nvim" },
-	{ "theprimeagen/vim-with-me" },
+	{ "theprimeagen/vim-be-good" },
 	{ "tpope/vim-fugitive" },
 	{
 		"lewis6991/gitsigns.nvim",
@@ -91,8 +91,10 @@ local plugins = {
 			{ "hrsh7th/cmp-nvim-lua" },
 
 			-- Snippets
-			{ "L3MON4D3/LuaSnip" },
-			{ "rafamadriz/friendly-snippets" },
+			{
+				"L3MON4D3/LuaSnip",
+				dependencies = { "rafamadriz/friendly-snippets" },
+			},
 		},
 	},
 }

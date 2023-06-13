@@ -8,6 +8,7 @@ lsp.ensure_installed({
 	"pyright",
 	"ruff_lsp",
 	"lua_ls",
+	"html",
 })
 
 -- Fix Undefined global 'vim'
@@ -24,8 +25,8 @@ lsp.configure("lua_ls", {
 local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-	["<Tab>"] = cmp.mapping.select_prev_item(cmp_select),
-	["<S-Tab>"] = cmp.mapping.select_next_item(cmp_select),
+	["<Tab>"] = cmp.mapping.select_next_item(cmp_select),
+	["<S-Tab>"] = cmp.mapping.select_prev_item(cmp_select),
 	["<CR>"] = cmp.mapping.confirm({ select = true }),
 	["<C-Space>"] = cmp.mapping.complete(),
 })
@@ -36,12 +37,12 @@ lsp.setup_nvim_cmp({
 
 lsp.set_preferences({
 	suggest_lsp_servers = false,
-	-- sign_icons = {
-	--     error = 'E',
-	--     warn = 'W',
-	--     hint = 'H',
-	--     info = 'I'
-	-- }
+	sign_icons = {
+		error = "E",
+		warn = "W",
+		hint = "H",
+		info = "I",
+	},
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -90,7 +91,7 @@ lsp.format_on_save({
 		-- ["pyright"] = { "python" },
 		-- if you have a working setup with null-ls
 		-- you can specify filetypes it can format.
-		["null-ls"] = { "javascript", "typescript", "python", "lua" },
+		["null-ls"] = { "javascript", "typescript", "python", "lua", "html" },
 	},
 })
 lsp.setup()
