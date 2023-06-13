@@ -26,6 +26,7 @@
   "telescope.nvim": { "branch": "master", "commit": "00cf15074a2997487813672a75f946d2ead95eb0" },
   "tokyonight.nvim": { "branch": "main", "commit": "161114bd39b990995e08dbf941f6821afbdcd666" },
   "trouble.nvim": { "branch": "main", "commit": "2af0dd9767526410c88c628f1cbfcb6cf22dd683" },
+  "undotree": { "branch": "master", "commit": "485f01efde4e22cb1ce547b9e8c9238f36566f21" },
   "vim-be-good": { "branch": "master", "commit": "c290810728a4f75e334b07dc0f3a4cdea908d351" },
   "vim-fugitive": { "branch": "master", "commit": "43f18ab9155c853a84ded560c6104e6300ad41da" },
   "which-key.nvim": { "branch": "main", "commit": "e271c28118998c93a14d189af3395812a1aa646c" },

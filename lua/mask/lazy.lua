@@ -21,12 +21,19 @@ local plugins = {
 		priority = 1000,
 	},
 	-- Must haves
-	{ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		run = function()
+			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
+			ts_update()
+		end,
+	},
 	{ "nvim-treesitter/nvim-treesitter-context" },
 	{ "theprimeagen/harpoon" },
 	{ "theprimeagen/refactoring.nvim" },
 	{ "theprimeagen/vim-be-good" },
 	{ "tpope/vim-fugitive" },
+	{ "mbbill/undotree" },
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
