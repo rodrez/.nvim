@@ -9,3 +9,16 @@ vim.opt.expandtab = true -- find out what this is
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
+
+-- Set a compatible clipboard manager
+vim.o.clipboard = "unnamedplus"
+vim.g.clipboard = {
+	copy = {
+		["+"] = "win32yank.exe -i --crlf",
+		["*"] = "win32yank.exe -i --crlf",
+	},
+	paste = {
+		["+"] = "win32yank.exe -o --lf",
+		["*"] = "win32yank.exe -o --lf",
+	},
+}
