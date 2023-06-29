@@ -12,13 +12,15 @@ vim.opt.wrap = false
 
 -- Set a compatible clipboard manager
 vim.o.clipboard = "unnamedplus"
-vim.g.clipboard = {
-	copy = {
-		["+"] = "win32yank.exe -i --crlf",
-		["*"] = "win32yank.exe -i --crlf",
-	},
-	paste = {
-		["+"] = "win32yank.exe -o --lf",
-		["*"] = "win32yank.exe -o --lf",
-	},
-}
+if vim.loop.os_uname().sysname ~= "Darwin" then
+	vim.clipboard = {
+		copy = {
+			["+"] = "win32yank.exe -i --crlf",
+			["*"] = "win32yank.exe -i --crlf",
+		},
+		paste = {
+			["+"] = "win32yank.exe -o --lf",
+			["*"] = "win32yank.exe -o --lf",
+		},
+	}
+end

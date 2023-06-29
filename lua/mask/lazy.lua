@@ -75,6 +75,7 @@ local plugins = {
 	},
 	{ "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
 	{ "folke/zen-mode.nvim", lazy = true },
+	{ "Djancyp/better-comments.nvim" },
 
 	-- LSP
 	{
