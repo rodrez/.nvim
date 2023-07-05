@@ -3,9 +3,10 @@ vim.keymap.set("n", "<leader>e", vim.cmd.Ex) -- opens the Explorer
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "gd", "gdzz")
 
---vim.keymap.set("n", "n", "nzzzv")
---vim.keymap.set("n", "N", "Nzzzv") Need to know what this does
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
 
 -- Paste without overriding register
 vim.keymap.set("x", "<leader>p", [["_dP]])
