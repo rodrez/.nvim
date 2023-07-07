@@ -12,7 +12,9 @@ vim.opt.wrap = false
 
 -- Set a compatible clipboard manager
 vim.o.clipboard = "unnamedplus"
-if vim.loop.os_uname().sysname ~= "Darwin" then
+
+local os_name = vim.loop.os_uname().sysname
+if os_name ~= "Darwin" and os_name ~= "Linux" then
 	vim.clipboard = {
 		copy = {
 			["+"] = "win32yank.exe -i --crlf",
