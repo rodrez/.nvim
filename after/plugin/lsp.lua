@@ -10,6 +10,7 @@ lsp.ensure_installed({
 	"lua_ls",
 	"html",
 	"prismals",
+	"svelte",
 })
 
 -- Fix Undefined global 'vim'
