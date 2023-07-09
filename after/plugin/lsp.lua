@@ -102,6 +102,7 @@ lsp.format_on_save({
 			"lua",
 			"html",
 			"prisma",
+			"svelte",
 		},
 	},
 })
