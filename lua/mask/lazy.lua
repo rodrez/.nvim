@@ -12,12 +12,28 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local function find_python()
+	local os_name = vim.loop.os_uname().sysname
+	local path
+	if os_name ~= "Darwin" and os_name ~= "Linux" then
+		path = "C:/Users/frodriguez/AppData/Local/nvim-data/mason/packages/debugpy/venv/Scripts/python"
+	else
+		path = "C:/Users/frodriguez/AppData/Local/nvim-data/mason/packages/debugpy/venv/bin/python"
+	end
+	return path
+end
+
 local plugins = {
 
 	-- Themes
 	{
 		"folke/tokyonight.nvim",
 		lazy = false,
+		priority = 1000,
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
 		priority = 1000,
 	},
 	-- Must haves
@@ -34,6 +50,15 @@ local plugins = {
 	{ "theprimeagen/vim-be-good" },
 	{ "tpope/vim-fugitive" },
 	{ "mbbill/undotree" },
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end,
+		opts = {},
+	},
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
@@ -59,6 +84,27 @@ local plugins = {
 			require("nvim-surround").setup({
 				-- Configuration here, or leave empty to use defaults
 			})
+		end,
+	},
+
+	-- Debugging
+	{
+		"mfussenegger/nvim-dap",
+	},
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = { "mfussenegger/nvim-dap" },
+	},
+	{
+		"mfussenegger/nvim-dap-python",
+		ft = "python",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+			"rcarriga/nvim-dap-ui",
+		},
+		config = function(_, opts)
+			local path = find_python()
+			require("dap-python").setup(path, opts)
 		end,
 	},
 	{ "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },

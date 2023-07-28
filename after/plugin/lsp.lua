@@ -39,12 +39,12 @@ lsp.setup_nvim_cmp({
 
 lsp.set_preferences({
 	suggest_lsp_servers = false,
-	sign_icons = {
-		error = "E",
-		warn = "W",
-		hint = "H",
-		info = "I",
-	},
+	-- sign_icons = {
+	-- 	error = "E",
+	-- 	warn = "W",
+	-- 	hint = "H",
+	-- 	info = "I",
+	-- },
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -88,11 +88,6 @@ lsp.format_on_save({
 		timeout_ms = 10000,
 	},
 	servers = {
-		-- ['lua_ls'] = {'lua'},
-		-- ['rust_analyzer'] = {'rust'},
-		-- ["pyright"] = { "python" },
-		-- if you have a working setup with null-ls
-		-- you can specify filetypes it can format.
 		["null-ls"] = {
 			"javascript",
 			"typescript",
