@@ -25,6 +25,7 @@ vim.opt.colorcolumn = "80"
 
 -- Set a compatible clipboard manager
 vim.o.clipboard = "unnamedplus"
+vim.g.netrw_banner = 0
 
 local os_name = vim.loop.os_uname().sysname
 if os_name ~= "Darwin" and os_name ~= "Linux" then
