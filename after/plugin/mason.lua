@@ -2,11 +2,16 @@ local mason = require("mason")
 
 mason.setup({
 	ensure_installed = {
-		"debugpy",
+		-- lua
 		"lua-language-server",
+		-- python
+		"debugpy",
 		"black",
 		"mypy",
-		"pyrigth",
+		"pyright",
 		"ruff",
+		-- C++
+		"clangd",
+		"clang-format",
 	},
 })

@@ -11,6 +11,7 @@ lsp.ensure_installed({
 	"html",
 	"prismals",
 	"svelte",
+	"clangd",
 })
 
 -- Fix Undefined global 'vim'
@@ -88,6 +89,7 @@ lsp.format_on_save({
 		timeout_ms = 10000,
 	},
 	servers = {
+		-- All filetypes to be autoformated
 		["null-ls"] = {
 			"javascript",
 			"typescript",
@@ -98,6 +100,7 @@ lsp.format_on_save({
 			"html",
 			"prisma",
 			"svelte",
+			"cpp",
 		},
 	},
 })
@@ -117,6 +120,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.prettier,
 		null_ls.builtins.formatting.black,
+		null_ls.builtins.formatting.clang_format,
 	},
 })
 
