@@ -110,6 +110,9 @@ local plugins = {
 	{ "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
 	{ "folke/zen-mode.nvim", lazy = true },
 
+	-- Copilot
+	{ "github/copilot.vim" },
+
 	-- LSP
 	{
 		"VonHeikemen/lsp-zero.nvim",
