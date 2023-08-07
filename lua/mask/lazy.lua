@@ -16,6 +16,7 @@ local function find_python()
 	local os_name = vim.loop.os_uname().sysname
 	local path
 	if os_name ~= "Darwin" and os_name ~= "Linux" then
+		-- this is terrible needs fix
 		path = "C:/Users/frodriguez/AppData/Local/nvim-data/mason/packages/debugpy/venv/Scripts/python"
 	else
 		path = "C:/Users/frodriguez/AppData/Local/nvim-data/mason/packages/debugpy/venv/bin/python"

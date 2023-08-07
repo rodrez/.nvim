@@ -40,3 +40,11 @@ if os_name ~= "Darwin" and os_name ~= "Linux" then
 		},
 	}
 end
+
+-- Set filetype to javascript for *.es6 files
+vim.cmd([[
+  augroup ES6FileType
+  autocmd!
+  autocmd BufNewFile,BufRead *.es6 set filetype=javascript
+  augroup END
+]])

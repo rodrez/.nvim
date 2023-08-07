@@ -1,6 +1,6 @@
 require("nvim-treesitter.configs").setup({
 	-- A list of parser names, or "all"
-	ensure_installed = { "comment", "python", "javascript", "typescript", "go" },
+	ensure_installed = { "comment", "lua", "python", "javascript", "typescript", "go" },
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
@@ -20,7 +20,4 @@ require("nvim-treesitter.configs").setup({
 		additional_vim_regex_highlighting = false,
 	},
 })
-require("nvim-treesitter.install").compilers = { "gcc" }
-
--- es6 files are treated as js
-vim.treesitter.language.register("es6", "javascript")
+require("nvim-treesitter.install").compilers = { "clang" }
