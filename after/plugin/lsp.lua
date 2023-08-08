@@ -12,6 +12,7 @@ lsp.ensure_installed({
 	"prismals",
 	"svelte",
 	"clangd",
+	"ocamllsp",
 })
 
 -- Fix Undefined global 'vim'
@@ -101,6 +102,7 @@ lsp.format_on_save({
 			"prisma",
 			"svelte",
 			"cpp",
+			"ocaml",
 		},
 	},
 })
@@ -121,6 +123,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.prettier,
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.clang_format,
+		null_ls.builtins.formatting.ocamlformat,
 	},
 })
 

@@ -87,7 +87,12 @@ local plugins = {
 			})
 		end,
 	},
-
+	{
+		"tjdevries/ocaml.nvim",
+		config = function()
+			require("ocaml").setup({})
+		end,
+	},
 	-- Debugging
 	{
 		"mfussenegger/nvim-dap",
