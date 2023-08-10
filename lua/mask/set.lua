@@ -21,7 +21,7 @@ vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
-vim.opt.colorcolumn = "80"
+-- vim.opt.colorcolumn = "80"
 
 -- Set a compatible clipboard manager
 vim.o.clipboard = "unnamedplus"
@@ -39,12 +39,12 @@ if os_name ~= "Darwin" and os_name ~= "Linux" then
 			["*"] = "win32yank.exe -o --lf",
 		},
 	}
-end
-
--- Set filetype to javascript for *.es6 files
-vim.cmd([[
+	vim.cmd([[
   augroup ES6FileType
   autocmd!
   autocmd BufNewFile,BufRead *.es6 set filetype=javascript
   augroup END
 ]])
+end
+
+-- Set filetype to javascript for *.es6 files
