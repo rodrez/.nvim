@@ -1,6 +1,8 @@
 --vim.opt.guicursor = ""
 vim.opt.relativenumber = true
 vim.opt.nu = true
+-- changes the color of the line number
+vim.api.nvim_set_hl(0, "LineNr", { fg = "#565f89" })
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -21,7 +23,7 @@ vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
--- vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "80"
 
 -- Set a compatible clipboard manager
 vim.o.clipboard = "unnamedplus"
@@ -39,12 +41,12 @@ if os_name ~= "Darwin" and os_name ~= "Linux" then
 			["*"] = "win32yank.exe -o --lf",
 		},
 	}
-	vim.cmd([[
+end
+
+-- Set filetype to javascript for *.es6 files
+vim.cmd([[
   augroup ES6FileType
   autocmd!
   autocmd BufNewFile,BufRead *.es6 set filetype=javascript
   augroup END
 ]])
-end
-
--- Set filetype to javascript for *.es6 files
