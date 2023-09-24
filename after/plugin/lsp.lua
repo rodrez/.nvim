@@ -120,7 +120,9 @@ null_ls.setup({
 		-- make sure the source name is supported by null-ls
 		-- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
 		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.prettier,
+		null_ls.builtins.formatting.prettier.with({
+			extra_filetypes = { "prisma", "svelte" },
+		}),
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.clang_format,
 		null_ls.builtins.formatting.ocamlformat,
