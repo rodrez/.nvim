@@ -1,0 +1,94 @@
+" Source your .vimrc
+"source ~/.vimrc
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+" Allows the yank contents to go into the clipboard"
+set clipboard+=unnamed
+set showcmd
+set showmode
+set visualbell
+
+" Do incremental searching.
+set incsearch
+set relativenumber
+set number
+set surround
+set commentary
+set multiple-cursor
+set NERDTree
+
+set highlightedyank
+let g:highlightedyank_highlight_duration = "1000"
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+
+" Find more examples here: https://jb.gg/share-ideavimrc
+map <C-c> <Esc>
+let mapleader = " "
+
+" Maps leader p to \"_dP which Deletes without copying to clipboard"
+map <leader>p <leader>"_dP
+
+" Toggle Distraction Mode"
+nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
+
+" Helpful Actions"
+nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
+nnoremap <leader>o :action OptimizeImports<CR>
+nnoremap <leader>bp :action ToggleLineBreakpoint<CR>
+nnoremap <leader>vbp :action ViewBreakpoints<CR>
+nnoremap <leader>e :action ActivateProjectToolWindow<CR>
+nnoremap <Tab> :action NextTab<CR>
+nnoremap <S-Tab> :action PreviousTab<CR>
+nnoremap ge :action GotoNextError<CR>
+noremap gE :action GotoPreviousError<CR>
+nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
+nnoremap <c-h> :action HideActiveWindows<CR>
+nnoremap <c-s> :action FileStructurePopup<CR>
+
+" Finding Files"
+nnoremap <leader>lg :action FindInPath<CR>
+nnoremap <c-a> :action GotoAction<CR>
+nnoremap <leader>f :action GotoFile<CR>
+nnoremap <leader>s :action GotoSymbol<CR>
+nnoremap <leader>u :action FindUsages<CR>
+nnoremap <leader>cl :action GotoClass<CR>
+nnoremap <leader>gp :action FileChooser.GotoProject<CR>
+nnoremap <leader>nf :action FileChooser.NewFile<CR>
+nnoremap <leader>nd :action FileChooser.NewFolder<CR>
+
+" Refactor rename"
+:map <leader>lr :action RenameElement<CR>
+:map <leader>lR :action RefactoringMenu<CR>
+:map <leader>fc <Action>(ReformatCode)
+"Surrounds based on context (e.g. if, try, etc.)"
+:map <leader>sw <Action>(SurroundWith)
+:map <leader>oi <Action>(OptimizeImports)
+
+" Plugins "
+nnoremap <leader>cp :action copilot.disableCopilot<CR>
+nnoremap <leader>ce :action copilot.enableCopilot<CR>
+
+" run stuff
+:map <leader>cg <Action>(ChooseRunConfiguration)
+:map <leader>dg <Action>(ChooseDebugConfiguration)
+:map <leader>1 <Action>(Run)
+:map <leader>2 <Action>(Debug)
+:map <leader>0 <Action>(Stop)
+
+" Center screen when jumping to next match
+nnoremap n nzz
+nnoremap N Nzz
+vnoremap n nzz
+vnoremap N Nzz
+
+" Center screen when moving up and down
+nnoremap <C-u> <C-u>zz
+nnoremap <C-o> <C-d>zz
+vnoremap <C-u> <C-u>zz
+vnoremap <C-o> <C-d>zz
