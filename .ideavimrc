@@ -65,7 +65,7 @@ nnoremap <leader>nd :action FileChooser.NewFolder<CR>
 " Refactor rename"
 :map <leader>lr :action RenameElement<CR>
 :map <leader>lR :action RefactoringMenu<CR>
-:map <leader>fc <Action>(ReformatCode)
+:map <c-f> <Action>(ReformatCode)
 "Surrounds based on context (e.g. if, try, etc.)"
 :map <leader>sw <Action>(SurroundWith)
 :map <leader>oi <Action>(OptimizeImports)
