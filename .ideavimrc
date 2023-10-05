@@ -37,6 +37,9 @@ map <leader>p <leader>"_dP
 " Toggle Distraction Mode"
 nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
 
+sethandler <C-w> n-v:ide i:vim
+
+
 " Helpful Actions"
 nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
 nnoremap <leader>o :action OptimizeImports<CR>
