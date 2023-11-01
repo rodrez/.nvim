@@ -2,19 +2,6 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
-lsp.ensure_installed({
-	"tsserver",
-	"rust_analyzer",
-	"pyright",
-	"ruff_lsp",
-	"lua_ls",
-	"html",
-	"prismals",
-	"svelte",
-	"clangd",
-	"ocamllsp",
-})
-
 -- Fix Undefined global 'vim'
 lsp.configure("lua_ls", {
 	settings = {
@@ -23,6 +10,23 @@ lsp.configure("lua_ls", {
 				globals = { "vim" },
 			},
 		},
+	},
+})
+require("mason").setup({})
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"tsserver",
+		"rust_analyzer",
+		"pyright",
+		"ruff_lsp",
+		"lua_ls",
+		"html",
+		"prismals",
+		"svelte",
+		"clangd",
+	},
+	handlers = {
+		lsp.default_setup,
 	},
 })
 
@@ -34,8 +38,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 	["<CR>"] = cmp.mapping.confirm({ select = true }),
 	["<C-Space>"] = cmp.mapping.complete(),
 })
-
-lsp.setup_nvim_cmp({
+cmp.setup({
 	mapping = cmp_mappings,
 })
 
