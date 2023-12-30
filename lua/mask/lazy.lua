@@ -12,18 +12,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local function find_python()
-	local os_name = vim.loop.os_uname().sysname
-	local path
-	if os_name ~= "Darwin" and os_name ~= "Linux" then
-		-- this is terrible needs fix
-		path = "C:/Users/frodriguez/AppData/Local/nvim-data/mason/packages/debugpy/venv/Scripts/python"
-	else
-		path = "C:/Users/frodriguez/AppData/Local/nvim-data/mason/packages/debugpy/venv/bin/python"
-	end
-	return path
-end
-
 local plugins = {
 
 	-- Themes
@@ -67,9 +55,16 @@ local plugins = {
 		end,
 	},
 	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	},
+	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.2",
 		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("telescope").load_extension("fzf")
+		end,
 	},
 	{
 		"numToStr/Comment.nvim",
@@ -102,13 +97,9 @@ local plugins = {
 			"mfussenegger/nvim-dap",
 			"rcarriga/nvim-dap-ui",
 		},
-		config = function(_, opts)
-			local path = find_python()
-			require("dap-python").setup(path, opts)
-		end,
 	},
 	{ "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
-	{ "folke/zen-mode.nvim", lazy = true },
+	{ "folke/zen-mode.nvim" },
 
 	-- Copilot
 	{ "github/copilot.vim" },
@@ -138,6 +129,10 @@ local plugins = {
 			{
 				"L3MON4D3/LuaSnip",
 				dependencies = { "rafamadriz/friendly-snippets" },
+				-- follow latest release.
+				version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+				-- install jsregexp (optional!).
+				build = "make install_jsregexp",
 			},
 		},
 	},

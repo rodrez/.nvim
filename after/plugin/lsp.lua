@@ -40,16 +40,17 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 })
 cmp.setup({
 	mapping = cmp_mappings,
+
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+	}, {
+		{ name = "buffer" },
+	}),
 })
 
 lsp.set_preferences({
 	suggest_lsp_servers = false,
-	-- sign_icons = {
-	-- 	error = "E",
-	-- 	warn = "W",
-	-- 	hint = "H",
-	-- 	info = "I",
-	-- },
 })
 
 lsp.on_attach(function(client, bufnr)
