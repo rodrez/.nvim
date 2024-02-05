@@ -1,5 +1,5 @@
 -- All Plugins reside here
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"a
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
@@ -64,9 +64,16 @@ local plugins = {
 		end,
 	},
 	{
+		  'JoosepAlviste/nvim-ts-context-commentstring',
+	},
+	{
 		"numToStr/Comment.nvim",
 		config = function()
-			require("Comment").setup()
+			require("Comment").setup(
+				{
+    pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+}
+			)
 		end,
 	},
 	{
