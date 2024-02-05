@@ -1,15 +1,16 @@
 -- All Plugins reside here
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"a
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
 		"clone",
 		"--filter=blob:none",
 		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stabel branch
+		"--branch=stable", -- latest stable branch
 		lazypath,
 	})
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
@@ -69,11 +70,9 @@ local plugins = {
 	{
 		"numToStr/Comment.nvim",
 		config = function()
-			require("Comment").setup(
-				{
-    pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-}
-			)
+			require("Comment").setup({
+    pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()
+})
 		end,
 	},
 	{
@@ -85,22 +84,6 @@ local plugins = {
 				-- Configuration here, or leave empty to use defaults
 			})
 		end,
-	},
-	-- Debugging
-	{
-		"mfussenegger/nvim-dap",
-	},
-	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = { "mfussenegger/nvim-dap" },
-	},
-	{
-		"mfussenegger/nvim-dap-python",
-		ft = "python",
-		dependencies = {
-			"mfussenegger/nvim-dap",
-			"rcarriga/nvim-dap-ui",
-		},
 	},
 	{ "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
 	{ "folke/zen-mode.nvim" },
