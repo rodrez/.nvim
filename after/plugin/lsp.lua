@@ -16,12 +16,11 @@ require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = {
 		"tsserver",
-		"rust_analyzer",
 		"pyright",
 		"ruff_lsp",
+		"gopls",
 		"lua_ls",
 		"html",
-		"prismals",
 		"svelte",
 		"clangd",
 	},

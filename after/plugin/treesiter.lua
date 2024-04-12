@@ -20,4 +20,15 @@ require("nvim-treesitter.configs").setup({
 		additional_vim_regex_highlighting = false,
 	},
 })
+
+-- Install the local tree-sitter parser for jinja
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+parser_config.jinja = {
+	install_info = {
+		url = "~/code/tree-sitter-jinja2",
+		files = { "src/parser.c" },
+	},
+	filetype = "jinja",
+}
+
 require("nvim-treesitter.install").compilers = { "clang" }
