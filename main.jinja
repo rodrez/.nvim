@@ -1,0 +1,16 @@
+<p> Paragraph 1 </p>
+{% set first_name =  "Sir/Madam" %}
+{% if customer.first_name %}
+    {% set first_name =  customer.first_name | title %}
+{% endif %}
+
+<div class="greeting">
+    <p> Hello, {{ first_name }}! </p>
+</div>
+
+
+
+{{ 3.14 }}
+{{ "Hello" }}
+{{ True }}
+{{ 42 }}
