@@ -18,26 +18,19 @@
 {% set heading = 'This is a heading' %}
 {# This is a comment #}
 
-{% block extra_css %}
-
-    {% compress css %}
-        <link 
-            href="{{ lessc("ui/bootstrap/less/b9-bootstrap-xxs.less") }}" 
-            media="all" 
-            rel="stylesheet" 
-            type="text/css"
-        />
-    {% endcompress %}
-{% endblock %}
-
-{% block content %}
+{% macro(param, param2) %}
+    <p>Macro</p>
+{% endmacro %}
 
 {% include 'main/include/searchbar.jinja' %}
 
 <div id="sortByBox">
-    {%- if years_models_trims -%}
-        <p>{{ years_models_trims }}</p>
-    {%- endif -%}
     <p><label for="id_order_by">Sort by:</label></p>
     {{ form.order_by }}
 </div>
+
+{{ 3 }}
+{{ 3.14 }}
+{# Commet #}
+{{ True }}
+

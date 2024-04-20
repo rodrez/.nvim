@@ -126,6 +126,8 @@ local plugins = {
 			},
 		},
 	},
+	-- discord swag
+	{ "andweeb/presence.nvim" },
 }
 
 require("lazy").setup(plugins, {})
