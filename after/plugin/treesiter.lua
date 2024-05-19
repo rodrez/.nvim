@@ -25,18 +25,10 @@ require("nvim-treesitter.configs").setup({
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 parser_config.jinja = {
 	install_info = {
-		url = "~/code/tree-sitter-jinja2",
+		url = "~/Documents/Code/tree-sitter-jinja",
 		files = { "src/parser.c" },
 	},
 	filetype = "jinja",
 }
 
 require("nvim-treesitter.install").compilers = { "clang" }
-
--- vim.treesitter.query.set(
--- 	"jinja",
--- 	"injections",
--- 	[[
---     (text) @html)
--- ]]
--- )

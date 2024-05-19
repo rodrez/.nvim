@@ -1,15 +1,13 @@
-<p> Paragraph 1 </p>
 {% set first_name =  "Sir/Madam" %}
 {% if customer.first_name %}
     {% set first_name =  customer.first_name | title %}
 {% endif %}
 
-<div class="greeting">
-    <p> Hello, {{ first_name }}! </p>
-</div>
 
 
-
+{% macro(param, param2) %}
+ {{ first_name }}
+{% endmacro %}
 {{ 3.14 }}
 {{ "Hello" }}
 {{ True }}
@@ -18,9 +16,6 @@
 {% set heading = 'This is a heading' %}
 {# This is a comment #}
 
-{% macro(param, param2) %}
-    <p>Macro</p>
-{% endmacro %}
 
 {% include 'main/include/searchbar.jinja' %}
 
